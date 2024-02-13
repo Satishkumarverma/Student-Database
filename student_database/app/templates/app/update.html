@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+  Update
+{% endblock %}
+{% block content %}
+  <div class="container-fluid p-4" style="box-shadow: 2px 2px 27px 2px #e6e6e6;;">
+    <div class="row my-3">
+      <div class="col-sm-7 offset-sm-3">
+        <h3>Update Student</h3>
+        <hr />
+        <form action="" method="POST" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+          {% for f in form %}
+            <div class="mb-3">
+              {{ f.label_tag }} <br />{{ f }}
+              <small class="text-danger">{{ f.errors|striptags }}</small>
+            </div>
+          {% endfor %}
+          <input class="btn btn-primary" type="submit" value="Submit" />
+          {% if form.non_fiels_errors %}
+            {% for e in form.non_fiels_errors %}
+              <p class="text-danger">{{ e }}</p>
+            {% endfor %}
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

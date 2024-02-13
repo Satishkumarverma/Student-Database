@@ -1,0 +1,91 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+  About
+{% endblock %}
+{% block content %}
+  <div class="container-fluid p-4" style="box-shadow: 2px 2px 27px 2px #e6e6e6;;">
+    <div class="container px-4 pb-3" id="icon-grid">
+      <div class="p-3 my-3 text-white rounded shadow-sm" style="background-color: purple;">
+        <div class="row text-center">
+          <div class="col-sm-1">
+            <a href="{% url "arrow" %}" class="text-light"><i class="fa-solid {{arrow}} fa-lg" style="margin-top: 20px;"></i></a>
+          </div>
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-6">
+            <h3>Students Database</h3>
+          </div>
+          <div class="col-sm-3">
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 pb-3 pt-3">
+        <div class="col d-flex align-items-start">
+          <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+            <use xlink:href="#bootstrap" />
+          </svg>
+          <div>
+            <h4 class="fw-bold mb-0">Add</h4>
+            <p>Paragraph of text beneath the heading to explain the heading.</p>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+            <use xlink:href="#cpu-fill" />
+          </svg>
+          <div>
+            <h4 class="fw-bold mb-0">Update</h4>
+            <p>Paragraph of text beneath the heading to explain the heading.</p>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+            <use xlink:href="#calendar3" />
+          </svg>
+          <div>
+            <h4 class="fw-bold mb-0">Delete</h4>
+            <p>Paragraph of text beneath the heading to explain the heading.</p>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+            <use xlink:href="#home" />
+          </svg>
+          <div>
+            <h4 class="fw-bold mb-0">View</h4>
+            <p>Paragraph of text beneath the heading to explain the heading.</p>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+            <use xlink:href="#speedometer2" />
+          </svg>
+          <div>
+            <h4 class="fw-bold mb-0">Filter</h4>
+            <p>Paragraph of text beneath the heading to explain the heading.</p>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+            <use xlink:href="#toggles2" />
+          </svg>
+          <div>
+            <h4 class="fw-bold mb-0">Search</h4>
+            <p>Paragraph of text beneath the heading to explain the heading.</p>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+            <use xlink:href="#geo-fill" />
+          </svg>
+          <div>
+            <h4 class="fw-bold mb-0">Export CSV</h4>
+            <p>Paragraph of text beneath the heading to explain the heading.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

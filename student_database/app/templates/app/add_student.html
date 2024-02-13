@@ -1,0 +1,41 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+  Add Student
+{% endblock %}
+{% block content %}
+<div class="container-fluid p-4" style="box-shadow: 2px 2px 27px 2px #e6e6e6;;">
+  <div class="row my-3">
+    <div style="display: flex; align-items: center; justify-content: center;">
+      {% if messages %}
+        {% for m in messages %}
+          <div {% if m.tags %} class="alert alert-{{m.tags}} alert-dismissible fade show" {% endif %} id="msg" role="alert">
+            <i class="fa-solid fa-circle-check fa-lg"></i> {{ m }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="col-sm-7 offset-sm-3">
+      <h3>Add New Student</h3>
+      <hr>
+      <form action="" method="POST" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {% for f in form %}
+          <div class="mb-3">
+            {{ f.label_tag }} <br />{{ f }}
+            <small class="text-danger">{{ f.errors|striptags }}</small>
+          </div>
+        {% endfor %}
+        <input class="btn btn-primary" type="submit" value="Submit" />
+        <a href="{% url "import_csv" %}" class="btn btn-success">Import from CSV</a>
+        {% if form.non_fiels_errors %}
+          {% for e in form.non_fiels_errors %}
+            <p class="text-danger">{{ e }}</p>
+          {% endfor %}
+        {% endif %}
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

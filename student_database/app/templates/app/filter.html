@@ -1,0 +1,203 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+  Filter
+{% endblock %}
+{% block content %}
+<div style="display: flex; align-items: center; justify-content: center;">
+  {% if messages %}
+    {% for m in messages %}
+      <div {% if m.tags %} class="alert alert-{{m.tags}} alert-dismissible fade show" {% endif %} role="alert" id='msg'> {{ m }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+  <div class="p-3 my-3 text-white rounded shadow-sm" style="background-color: purple;">
+    <div class="row text-center">
+      <div class="col-sm-2">
+        <a href="{% url 'refresh' %}" class="text-light"><i class="fa-solid {{ refresh }} fa-lg" style="margin-top: 20px;"></i></a>
+      </div>
+      <div class="col-sm-7">
+        <h3>Students Details</h3>
+      </div>
+      <div class="col-sm-3">
+        <h6 style="margin-top: 10px;">Total Student: {{total_student}}</h6>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-3 my-3 text-white rounded shadow-sm" style="background-color: blue">
+    <form action="" method="POST" novalidate>
+      {% csrf_token %}
+    <div class="row text-center">
+      <div class="col-sm-1">
+        <h5 style="margin-top: 6px;">Filter:</h5>
+      </div>
+      <div class="col-sm-3">
+        <label for="class" style="margin-top: 6px;">Class:</label>
+        <select name="clas" id="class" style="margin-top: 6px;">
+          {% if clas_v %}
+          <option value="{{clas_v}}" selected>{{clas_v}}</option>
+          <option value="">---------</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          {% else %}
+          <option value="">---------</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          {% endif %}
+        </select>
+      </div>
+      <div class="col-sm-3">
+        <label style="margin-top: 6px;" for="state">Gender:</label>
+        <select name="gender">
+          {% if gender_v %}
+          <option value="{{gender_v}}" selected>{{gender_v}}</option>
+          <option value="">---------</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          {% else %}
+          <option value="">---------</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          {% endif %}
+        </select>
+      </div>
+      <div class="col-sm-3">
+        <label style="margin-top: 6px;" for="state">State:</label>
+        <select name="state">
+          {% if state_v %}
+            <option value="{{state_v}}" selected>{{state_v}}</option>
+            <option value="">---------</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunanchal Pradesh">Arunanchal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="West Bengal">West Bengal</option>
+          {% else %}  
+          <option value="">---------</option>
+          <option value="Andhra Pradesh">Andhra Pradesh</option>
+          <option value="Arunanchal Pradesh">Arunanchal Pradesh</option>
+          <option value="Assam">Assam</option>
+          <option value="Bihar">Bihar</option>
+          <option value="Chhattisgarh">Chhattisgarh</option>
+          <option value="Goa">Goa</option>
+          <option value="Gujarat">Gujarat</option>
+          <option value="Haryana">Haryana</option>
+          <option value="Himachal Pradesh">Himachal Pradesh</option>
+          <option value="Jharkhand">Jharkhand</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Kerala">Kerala</option>
+          <option value="Madhya Pradesh">Madhya Pradesh</option>
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="Manipur">Manipur</option>
+          <option value="Meghalaya">Meghalaya</option>
+          <option value="Mizoram">Mizoram</option>
+          <option value="Nagaland">Nagaland</option>
+          <option value="Odisha">Odisha</option>
+          <option value="Punjab">Punjab</option>
+          <option value="Rajasthan">Rajasthan</option>
+          <option value="Sikkim">Sikkim</option>
+          <option value="Tamil Nadu">Tamil Nadu</option>
+          <option value="Telangana">Telangana</option>
+          <option value="Tripura">Tripura</option>
+          <option value="Uttarakhand">Uttarakhand</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+          <option value="West Bengal">West Bengal</option>
+          {% endif %}
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-sm btn-success" style="margin-top: 4px;">Go</button>
+      </div>
+    </div>
+  </form>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">SNo</th>
+          <th scope="col">Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">Class</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">Gender</th>
+          <th scope="col">State</th>
+          <th scope="col" class="text-center">Action</th>
+          <th scope="col">View</th>
+        </tr>
+      </thead>
+      <tbody>
+       {% for d in my_data %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{% if d.image %}<img src="{{d.image.url}}" alt="profile" style="width: 35px; height: 35px; border-radius: 50%;">{% else %}<img src="{% static '/images/profile.webp' %}" alt="profile" style="width: 35px; height: 35px; border-radius: 50%;">{% endif %}</td>
+            <td>{{ d.name }}</td>
+            <td>{{ d.clas }}</td>
+            <td>{{ d.dob }}</td>
+            <td>{{ d.gender }}</td>
+            <td>{{ d.state }}</td>
+            <td class="text-center">
+              <a href="{% url 'update' d.id %}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square fa-sm"></i></a><a href="{% url 'delete' d.id %}" class="btn btn-danger ms-2"><i class="fa-solid fa-trash fa-sm"></i></a>
+            </td>
+            <td>
+              <a href="{% url 'profile' d.id %}" class="btn btn-primary"><i class="fa-solid fa-eye fa-sm"></i></a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="9">
+              <h2 class="text-danger text-center my-5">No Data Found</h2>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

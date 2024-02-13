@@ -1,0 +1,22 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+  Import CSV
+{% endblock %}
+{% block content %}
+  <div class="container-fluid p-4" style="box-shadow: 2px 2px 27px 2px #e6e6e6; width: 100%; height: 78vh; display: flex; align-items: center; justify-content: center;">
+    <div style="width: 500px;">
+      <h3>Add New Student</h3>
+      <hr />
+      <form method='post' enctype='multipart/form-data'>
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="formFileSm" class="form-label">Select your CSV File</label>
+            <input class="form-control form-control-sm" id="formFileSm" type="file" name="csv_file">
+          </div>
+        <br>
+        <input type="submit" class='btn btn-success' value='Add Records'>
+    </form>
+    </div>
+  </div>
+{% endblock %}

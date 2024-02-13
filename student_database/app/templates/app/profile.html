@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+  Profile
+{% endblock %}
+{% block content %}
+  <div class="container-fluid p-4" style="box-shadow: 2px 2px 27px 2px #e6e6e6;;">
+    <div class="container-fluid">
+      <div class="container" style="max-width: 700px;">
+        <h2 class="text-center">Student Profile</h2>
+        <hr class="dg-dark" />
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="text-center">
+              {% if data.image %}
+                <img src="{{ data.image.url }}" class="card-img-top" alt="Profile" style="width: 200px; height: 200px; border-radius: 10%;" />
+              {% else %}
+                <img src="{% static '/images/profile.webp' %}" class="card-img-top" alt="Profile" style="width: 200px; height: 200px; border-radius: 10%;" />
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <h5><b>Name:</b> {{ data.name }}</h5>
+            <h5><b>Class:</b> {{ data.clas }}</h5>
+            <h5><b>Date of Birth:</b> {{ data.dob }}</h5>
+            <h5><b>Gender:</b> {{ data.gender }}</h5>
+            <h5><b>Email:</b> {{ data.email }}</h5>
+            <h5><b>Phone No:</b> {{ data.phone }}</h5>
+            <h5><b>Address:</b> {{ data.address }}</h5>
+            <h5><b>State:</b> {{ data.state }}</h5>
+            <p>
+              <a class="btn btn-success" href="{% url 'home' %}"><i class="fa-solid fa-share"></i> Home</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
